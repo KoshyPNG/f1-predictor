@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F1 Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>F1 <span>Predictor</span></h1>
+      <p class="tag">Choisis un circuit, des pilotes et leurs voitures : le classement est estimé à partir de leurs performances passées (API Jolpica).</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="status" class="status" role="status">Chargement des données…</div>
+
+    <section id="step1" class="panel" hidden>
+      <h2><b>1</b> Circuit</h2>
+      <label class="sr" for="circuit">Circuit</label>
+      <select id="circuit"></select>
+    </section>
+
+    <section id="step2" class="panel" hidden>
+      <div class="panel-head">
+        <h2><b>2</b> Pilotes &amp; voitures</h2>
+        <div class="tools">
+          <span id="count" class="count"></span>
+          <button type="button" class="ghost" id="all">Tout</button>
+          <button type="button" class="ghost" id="none">Aucun</button>
+          <button type="button" class="ghost" id="reset">Voitures d'origine</button>
+        </div>
+      </div>
+      <div id="drivers" class="drivers"></div>
+      <button type="button" id="go" class="cta">Prédire le classement</button>
+    </section>
+
+    <section id="step3" class="panel" hidden aria-live="polite">
+      <h2><b>3</b> Classement prédit</h2>
+      <p id="context" class="muted"></p>
+      <div id="podium" class="podium"></div>
+      <ol id="table" class="table"></ol>
+      <p class="muted small">Score = position attendue (plus bas = mieux). Il combine la forme récente de la voiture, son historique sur ce circuit, et l'écart du pilote avec son coéquipier (forme + circuit). La probabilité de victoire est indicative : une course reste imprévisible.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

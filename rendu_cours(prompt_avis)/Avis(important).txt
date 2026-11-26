@@ -1,0 +1,17 @@
+(Chaque discussion a un numéro à la fin, donc à lire dans l'ordre croissant.)
+
+Dans un premier temps, j'ai voulu faire un site pour calculer la note d'un futur film,
+série ou jeu à partir des notes des anciens projets de l'équipe et des dernières sorties du même genre(horreur, action, etc.).
+
+Mais les API étaient payantes ou nécessitaient une demande de clé d'API que j'ai cherchée avec Gemini,
+alors j'ai demandé à Claude s'il avait une autre piste, mais non.
+
+Puis je suis retourné sur Gemini pour qu'il me donne des API gratuites, et il m'en a donné une sur la F1.
+Comme j'ai des amis qui aiment la F1, j'ai demandé à Claude de coder un programme pour prédire
+le classement en choisissant la piste, les pilotes et la voiture.
+
+Le problème que j'ai réalisé après avoir écrit le prompt, c'est que j'ai oublié de lui expliquer
+comment faire la prédiction, donc je ne sais pas comment il s'y prend. Ensuite, j'ai demandé à Gemini des informations
+sur l'API que j'aurais pu donner à Claude pour accélérer la partie communication avec l'API.
+
+(il y a la réponse de comment la prediction marche dans calcule_predit.txt)

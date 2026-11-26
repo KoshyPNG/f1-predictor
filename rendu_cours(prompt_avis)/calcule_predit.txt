@@ -1,0 +1,38 @@
+Le calcul se fait en trois étapes, dans predict.go.
+
+1. Pondération par ancienneté
+Forme récente (2 dernières saisons) : le poids d'une course est 0,5^(âge / 10). L'âge vaut 0 
+pour la dernière course, et une course vieille de 10 courses compte moitié moins.
+Historique du circuit (8 saisons) : le poids d'une saison est 0,6^(années de recul).
+2. Voiture et pilote séparés
+
+Dans chaque course, on calcule la position moyenne de chaque écurie, c'est-à-dire la moyenne de ses deux pilotes.
+
+Voiture
+
+forme_voiture est la moyenne pondérée de cette position moyenne sur les courses récentes.
+score_voiture = (Σ poids × position_circuit + 2 × forme_voiture) / (Σ poids + 2)
+Le « 2 » est un lissage : avec peu d'historique sur le circuit, le résultat reste proche de la forme actuelle.
+
+Pilote
+
+Dans chaque course, écart = position du pilote − position moyenne de son écurie. Un écart négatif signifie 
+qu'il a battu sa voiture.
+écart_forme = Σ poids × écart / (Σ poids + 3), ce qui le tire vers 0 quand il y a peu de courses.
+écart_final = (Σ poids × écart_circuit + 2 × écart_forme) / (Σ poids + 2)
+3. Score final et probabilité
+score = score_voiture(voiture choisie) + écart_final(pilote)
+
+Plus le score est bas, mieux c'est. Le classement est le tri croissant des scores.
+
+La probabilité de victoire est un softmax : exp(−(score − meilleur_score) / 2), normalisé pour que la somme fasse 100 %.
+
+Pourquoi on peut changer de voiture
+
+L'écart du pilote est mesuré par rapport à son coéquipier, donc sans l'effet de la voiture. Un pilote placé 
+dans une Red Bull garde son « niveau pilote » et hérite de la performance de la Red Bull.
+
+Exemple : une voiture à 3,0 de moyenne et un pilote à −0,8 donnent un score de 2,2, soit environ P2.
+
+Les constantes (10, 0,6, 2, 3, 2) sont en haut de predict.go. La section « Modèle de prédiction » 
+du doc résume la même logique.
