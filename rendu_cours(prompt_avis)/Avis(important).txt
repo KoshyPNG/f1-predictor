@@ -2,8 +2,8 @@
 
 Dans un premier temps, j'ai voulu faire un site pour calculer la note d'un futur film,
 série ou jeu à partir des notes des anciens projets de l'équipe et des dernières sorties du même genre(horreur, action, etc.).
-
-Mais les API étaient payantes ou nécessitaient une demande de clé d'API que j'ai cherchée avec Gemini,
+Puis tu m'as donné l'idée de créer mon propre film en choisissant le réalisateur, les acteurs et le genre.
+Mais les API étaient payantes ou nécessitaient une demande de clé d'API avec Gemini,
 alors j'ai demandé à Claude s'il avait une autre piste, mais non.
 
 Puis je suis retourné sur Gemini pour qu'il me donne des API gratuites, et il m'en a donné une sur la F1.
@@ -12,6 +12,6 @@ le classement en choisissant la piste, les pilotes et la voiture.
 
 Le problème que j'ai réalisé après avoir écrit le prompt, c'est que j'ai oublié de lui expliquer
 comment faire la prédiction, donc je ne sais pas comment il s'y prend. Ensuite, j'ai demandé à Gemini des informations
-sur l'API que j'aurais pu donner à Claude pour accélérer la partie communication avec l'API.
+sur l'API que j'aurais pu donner à Claude pour accélérer la partie communication avec l'API. Le prompt est aussi court.
 
 (il y a la réponse de comment la prediction marche dans calcule_predit.txt)
